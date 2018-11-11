@@ -274,7 +274,7 @@ avl_node* _avl_subtree_remove(int val, avl_node* n) {
              * child before returning, since it should already be balanced.
              */
             avl_node* left_child = n->left;
-            free(n);
+            delete n;
             return left_child;
 
         } else if (n->right != NULL) {
@@ -286,7 +286,7 @@ avl_node* _avl_subtree_remove(int val, avl_node* n) {
              * child before returning, since it should already be balanced.
              */
             avl_node* right_child = n->right;
-            free(n);
+            delete n;
             return right_child;
 
         } else {
@@ -295,7 +295,7 @@ avl_node* _avl_subtree_remove(int val, avl_node* n) {
              * Otherwise, n has no children, and we can simply free it and return
              * NULL so that n's parent will lose n as a child via the recursion.
              */
-            free(n);
+            delete n;
             return NULL;
         }
     }
