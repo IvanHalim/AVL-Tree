@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "avl.hpp"
 
 using std::cout;
