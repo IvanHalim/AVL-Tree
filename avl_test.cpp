@@ -7,6 +7,8 @@ using std::endl;
 int main() {
     avl myAvl;
     cout << std::boolalpha << myAvl.isempty() << endl;
+    myAvl.insert(96);
+    myAvl.insert(16);
     myAvl.insert(48);
     myAvl.insert(32);
     myAvl.insert(40);
