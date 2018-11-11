@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cassert>
 
 #include "avl.hpp"
 
@@ -19,7 +18,6 @@ bool avl::isempty() {
  */
 avl_node* _avl_node_create(int val) {
     avl_node* n = new avl_node;
-    assert(n);
     n->val = val;
     n->left = n->right = NULL;
     n->height = 0;
