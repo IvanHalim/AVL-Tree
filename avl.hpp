@@ -13,6 +13,7 @@ class avl
         void remove(int);
         bool isempty();
         bool contains(int);
+        int height();
         void print();
         ~avl();
 };

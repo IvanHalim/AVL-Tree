@@ -1,4 +1,8 @@
+#include <iostream>
 #include "avl.hpp"
+
+using std::cout;
+using std::endl;
 
 int main() {
     avl myAvl;
@@ -12,6 +16,7 @@ int main() {
     myAvl.remove(32);
     myAvl.insert(4);
     myAvl.print();
+    cout << myAvl.height() << endl;
 
     return 0;
 }

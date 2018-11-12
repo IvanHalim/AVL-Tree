@@ -34,6 +34,11 @@ int _avl_get_height(avl_node* n) {
     return n->height;
 }
 
+int avl::height() {
+
+    return _avl_get_height(root);
+}
+
 /*
  * Helper function to update the height of a node, based on the height of
  * its children.
