@@ -349,14 +349,30 @@ bool avl::contains(int val) {
     return false;
 }
 
+/*
+ * Helper function to return the number of nodes in a subtree of a AVL rooted at
+ * a specified node.
+ */
 int _avl_subtree_size(avl_node* n) {
-  if (n == NULL)
-    return 0;
-  return 1 + _avl_subtree_size(n->left) + _avl_subtree_size(n->right);
+
+    // If n is null then the subtree has no node in it.
+    if (n == NULL)
+        return 0;
+
+    /*
+     * The number of nodes is the sum of the nodes in the left subtree and the nodes
+     * in the right subtree, plus this node.
+     */
+    return 1 + _avl_subtree_size(n->left) + _avl_subtree_size(n->right);
 }
 
 int avl::size() {
-  return _avl_subtree_size(root);
+
+    /*
+     * We return the size of the tree by using our subtree size function starting with
+     * the subtree rooted at root.
+     */
+    return _avl_subtree_size(root);
 }
 
 void _avl_subtree_print(avl_node* n, int level) {
