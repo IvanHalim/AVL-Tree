@@ -36,6 +36,7 @@ int _avl_get_height(avl_node* n) {
 
 int avl::height() {
 
+    // The height of the tree is simply the height of the subtree rooted at root
     return _avl_get_height(root);
 }
 
