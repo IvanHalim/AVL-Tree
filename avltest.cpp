@@ -17,6 +17,7 @@ int main() {
     myAvl.insert(4);
     myAvl.print();
     cout << myAvl.height() << endl;
+    cout << myAvl.size() << endl;
 
     return 0;
 }

@@ -349,6 +349,16 @@ bool avl::contains(int val) {
     return false;
 }
 
+int _avl_subtree_size(avl_node* n) {
+  if (n == NULL)
+    return 0;
+  return 1 + _avl_subtree_size(n->left) + _avl_subtree_size(n->right);
+}
+
+int avl::size() {
+  return _avl_subtree_size(root);
+}
+
 void _avl_subtree_print(avl_node* n, int level) {
     if (n == NULL) {
         return;

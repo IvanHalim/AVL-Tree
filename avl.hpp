@@ -14,6 +14,7 @@ class avl
         bool isempty();
         bool contains(int);
         int height();
+        int size();
         void print();
         ~avl();
 };
