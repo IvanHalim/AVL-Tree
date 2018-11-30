@@ -1,10 +1,7 @@
 #ifndef AVL_HPP
 #define AVL_HPP
 
-#include "avlnode.hpp"
-
-class avl
-{
+class avl {
     private:
         avl_node* root;
     public:

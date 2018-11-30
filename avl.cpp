@@ -4,6 +4,13 @@
 using std::cout;
 using std::endl;
 
+struct avl_node {
+    int val;
+    avl_node* left;
+    avl_node* right;
+    int height;
+};
+
 avl::avl() {
     root = NULL;
 }
