@@ -395,7 +395,7 @@ bool _avl_subtree_path_sum(int sum, avl_node* n) {
   return false;
 }
 
-bool avl::avl_path_sum(int sum) {
+bool avl::path_sum(int sum) {
   return _avl_subtree_path_sum(sum, root);
 }
 

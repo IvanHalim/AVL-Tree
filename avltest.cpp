@@ -3,6 +3,7 @@
 
 using std::cout;
 using std::endl;
+using std::boolalpha;
 
 int main() {
     avl myAvl;
@@ -18,6 +19,8 @@ int main() {
     myAvl.print();
     cout << myAvl.height() << endl;
     cout << myAvl.size() << endl;
+    cout << boolalpha << myAvl.path_sum(64) << endl;
+    cout << boolalpha << myAvl.path_sum(96) << endl;
 
     return 0;
 }
