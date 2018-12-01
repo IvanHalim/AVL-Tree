@@ -12,6 +12,7 @@ class avl {
         void remove(int);
         bool isempty();
         bool contains(int);
+        bool avl_path_sum(int);
         int height();
         int size();
         void print();

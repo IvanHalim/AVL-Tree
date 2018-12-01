@@ -382,6 +382,23 @@ int avl::size() {
     return _avl_subtree_size(root);
 }
 
+bool _avl_subtree_path_sum(int sum, avl_node* n) {
+  if (n == NULL) {
+    return false;
+  } else if (n->left == NULL && n->right == NULL) {
+    return n->val == sum;
+  } else if (_avl_subtree_path_sum(sum - n->val, n->left)) {
+    return true;
+  } else if (_avl_subtree_path_sum(sum - n->val, n->right)) {
+    return true;
+  }
+  return false;
+}
+
+bool avl::avl_path_sum(int sum) {
+  return _avl_subtree_path_sum(sum, root);
+}
+
 void _avl_subtree_print(avl_node* n, int level) {
     if (n == NULL) {
         return;
