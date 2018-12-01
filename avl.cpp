@@ -382,21 +382,65 @@ int avl::size() {
     return _avl_subtree_size(root);
 }
 
+/*
+ * Helper function to determine if a subtree of a AVL rooted at a specified node has
+ * a path from the root to a leaf in which the node values sum to a specified value.
+ * Operates recursively by searching through the left subtree and the right subtree.
+ * If at least one of the child has a path which adds up to sum, then the subtree
+ * has a path which adds up to sum.
+ */
 bool _avl_subtree_path_sum(int sum, avl_node* n) {
-  if (n == NULL) {
+
+    if (n == NULL) {
+
+        /*
+         * If n is NULL, that means previously we've reached a leaf node without
+         * finding a path that adds up to sum.
+         */
+        return false;
+
+    } else if (n->left == NULL && n->right == NULL) {
+
+        /*
+         * If this node has no child, that means this is a leaf node.
+         * See if the value of this node is equal to sum.
+         */
+        return n->val == sum;
+
+    } else if (_avl_subtree_path_sum(sum - n->val, n->left)) {
+
+        /*
+         * Assuming the subtree has a path that adds up to sum, then
+         * its child subtree should have a path that adds up to sum
+         * minus the value of its parent node. Search the left subtree
+         * if it has a path that adds up to sum - n->val.
+         */
+        return true;
+
+    } else if (_avl_subtree_path_sum(sum - n->val, n->right)) {
+
+        /*
+         * Search the right subtree if it has a path that adds up to
+         * sum - n->val.
+         */
+        return true;
+    }
+
+    /*
+     * If we make it this far and we still haven't found a path that
+     * adds up to sum then the subtree has no path that adds up to sum.
+     */
     return false;
-  } else if (n->left == NULL && n->right == NULL) {
-    return n->val == sum;
-  } else if (_avl_subtree_path_sum(sum - n->val, n->left)) {
-    return true;
-  } else if (_avl_subtree_path_sum(sum - n->val, n->right)) {
-    return true;
-  }
-  return false;
 }
 
 bool avl::path_sum(int sum) {
-  return _avl_subtree_path_sum(sum, root);
+
+    /*
+     * We determine if the AVL tree has a path that adds up to sum by
+     * using our subtree path sum function starting with the subtree
+     * rooted at root.
+     */
+    return _avl_subtree_path_sum(sum, root);
 }
 
 void _avl_subtree_print(avl_node* n, int level) {
