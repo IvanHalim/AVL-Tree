@@ -1,10 +1,9 @@
 #ifndef AVL_HPP
 #define AVL_HPP
 
-struct avl_node;
-
 class avl {
     private:
+        struct avl_node;
         avl_node* root;
     public:
         avl();
