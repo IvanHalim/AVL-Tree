@@ -8,11 +8,11 @@ class avl {
         avl_node* root;
     public:
         avl();
-        void insert(int);
-        void remove(int);
+        void insert(const int&);
+        void remove(const int&);
         bool isempty();
-        bool contains(int);
-        bool path_sum(int);
+        bool contains(const int&);
+        bool path_sum(const int&);
         int height();
         int size();
         void print();
