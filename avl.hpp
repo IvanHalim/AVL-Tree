@@ -2,10 +2,11 @@
 #define AVL_HPP
 
 class avl {
+    public:
+        struct avl_node;
     private:
         avl_node* root;
     public:
-        struct avl_node;
         avl();
         void insert(int);
         void remove(int);
