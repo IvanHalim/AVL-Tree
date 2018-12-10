@@ -323,7 +323,7 @@ void avl::remove(int val) {
 bool avl::contains(int val) {
 
     // Iteratively search for val in t.
-    avl::avl_node* cur = root;
+    avl_node* cur = root;
     while (cur != NULL) {
 
         if (val == cur->val) {
