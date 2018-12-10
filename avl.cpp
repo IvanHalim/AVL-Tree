@@ -86,7 +86,7 @@ avl::avl_node* avl::_avl_rotate_left(avl_node* n) {
  * node.  The rotation is centered around the node's right child.  The new
  * subtree root (the rotation's center) is returned.
  */
-avl::avl_node* _avl_rotate_right(avl_node* n) {
+avl::avl_node* avl::_avl_rotate_right(avl_node* n) {
     avl_node* center = n->left;
 
     // The center's right child and n "trade places" in the tree.
@@ -106,11 +106,11 @@ avl::avl_node* _avl_rotate_right(avl_node* n) {
  * factor means the node is right-heavy, and a zero balance factor means the
  * node is height-balanced.
  */
-int _avl_balance_factor(avl_node* n) {
+int avl::_avl_balance_factor(avl_node* n) {
     return _avl_get_height(n->right) - _avl_get_height(n->left);
 }
 
-avl::avl_node* _avl_balance(avl_node* n) {
+avl::avl_node* avl::_avl_balance(avl_node* n) {
 
     int bf = _avl_balance_factor(n);
     if (bf < -1) {
@@ -152,7 +152,7 @@ avl::avl_node* _avl_balance(avl_node* n) {
  * Returns the root of the given subtree, modified to contain a new node with
  * the specified value.
  */
-avl::avl_node* _avl_subtree_insert(int val, avl_node* n) {
+avl::avl_node* avl::_avl_subtree_insert(int val, avl_node* n) {
 
     if (n == NULL) {
 
@@ -202,7 +202,7 @@ void avl::insert(int val) {
 /*
  * Helper function to return the minimum value in a subtree of a AVL.
  */
-int _avl_subtree_min_val(avl_node* n) {
+int avl::_avl_subtree_min_val(avl_node* n) {
 
     /*
      * The minimum value in any subtree is just the leftmost value.  Keep going
@@ -223,7 +223,7 @@ int _avl_subtree_min_val(avl_node* n) {
  * Returns the potentially new root of the given subtree, modified to have
  * the specified value removed.
  */
-avl::avl_node* _avl_subtree_remove(int val, avl_node* n) {
+avl::avl_node* avl::_avl_subtree_remove(int val, avl_node* n) {
 
     if (n == NULL) {
 
@@ -360,7 +360,7 @@ bool avl::contains(int val) {
  * Helper function to return the number of nodes in a subtree of a AVL rooted at
  * a specified node.
  */
-int _avl_subtree_size(avl_node* n) {
+int avl::_avl_subtree_size(avl_node* n) {
 
     // If n is null then the subtree has no node in it.
     if (n == NULL)
@@ -389,7 +389,7 @@ int avl::size() {
  * If at least one of the child has a path which adds up to sum, then the subtree
  * has a path which adds up to sum.
  */
-bool _avl_subtree_path_sum(int sum, avl_node* n) {
+bool avl::_avl_subtree_path_sum(int sum, avl_node* n) {
 
     if (n == NULL) {
 
@@ -443,7 +443,7 @@ bool avl::path_sum(int sum) {
     return _avl_subtree_path_sum(sum, root);
 }
 
-void _avl_subtree_print(avl_node* n, int level) {
+void avl::_avl_subtree_print(avl_node* n, int level) {
     if (n == NULL) {
         return;
     }
