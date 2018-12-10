@@ -2,6 +2,8 @@
 #define AVL_HPP
 
 class avl {
+    private:
+        avl_node* root;
     public:
         struct avl_node;
         avl();
@@ -14,7 +16,5 @@ class avl {
         int size();
         void print();
         ~avl();
-    private:
-        avl_node* root;
 };
 #endif
