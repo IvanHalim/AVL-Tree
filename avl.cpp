@@ -467,7 +467,7 @@ void _euler_tour(avl::node* n, avl::iterator iter) {
 }
 
 avl::iterator avl::iterator_create() {
-    avl::iterator iter;
+    iterator iter;
     _euler_tour(root, iter);
     return iter;
 }
