@@ -1,8 +1,11 @@
 #include <iostream>
+#include <cassert>
+#include <queue>
 #include "avl.hpp"
 
 using std::cout;
 using std::endl;
+using std::queue;
 
 struct avl::node {
     int val;
@@ -24,6 +27,7 @@ bool avl::isempty() {
  */
 avl::node* _avl_node_create(int val) {
     avl::node* n = new avl::node;
+    assert(n);
     n->val = val;
     n->left = n->right = NULL;
     n->height = 0;
@@ -441,6 +445,40 @@ bool avl::path_sum(int sum) {
      * rooted at root.
      */
     return _avl_subtree_path_sum(sum, root);
+}
+
+struct avl::iterator {
+    queue<int> items;
+    bool has_next();
+    int next();
+};
+
+void _in_order_process(avl::node* n, avl::iterator iter) {
+    assert(n);
+    iter.items.push(n->val);
+}
+
+void _euler_tour(avl::node* n, avl::iterator iter) {
+    if (n != NULL) {
+        _euler_tour(n->left, iter);
+        _in_order_process(n, iter);
+        _euler_tour(n->right, iter);
+    }
+}
+
+avl::iterator avl::iterator_create() {
+    avl::iterator iter;
+    _euler_tour(root, iter);
+    return iter;
+}
+
+bool avl::iterator::has_next() {
+    return !items.empty();
+}
+
+int avl::iterator::next() {
+    assert(has_next());
+    return items.pop();
 }
 
 void _avl_subtree_print(avl::node* n, int level) {
