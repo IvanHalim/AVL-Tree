@@ -51,7 +51,7 @@ int avl::height() {
  * Helper function to update the height of a node, based on the height of
  * its children.
  */
-void _avl_update_height(avl_node* n) {
+void avl::_avl_update_height(avl_node* n) {
     int lh = _avl_get_height(n->left);
     int rh = _avl_get_height(n->right);
 

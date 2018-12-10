@@ -9,6 +9,7 @@ class avl {
         // Helper functions
         avl_node* _avl_node_create(int);
         int _avl_get_height(avl_node*);
+        void _avl_update_height(avl_node*);
     public:
         avl();
         void insert(int);
