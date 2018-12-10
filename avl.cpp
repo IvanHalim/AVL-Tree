@@ -1,11 +1,8 @@
 #include <iostream>
-#include <cassert>
-#include <queue>
 #include "avl.hpp"
 
 using std::cout;
 using std::endl;
-using std::queue;
 
 struct avl::node {
     int val;
