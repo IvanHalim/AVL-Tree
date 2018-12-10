@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-struct avl_node {
+struct avl::avl_node {
     int val;
     avl_node* left;
     avl_node* right;
@@ -22,7 +22,7 @@ bool avl::isempty() {
 /*
  * Helper function to generate a single AVL node containing a given value.
  */
-avl_node* _avl_node_create(int val) {
+avl::avl_node* _avl_node_create(int val) {
     avl_node* n = new avl_node;
     n->val = val;
     n->left = n->right = NULL;
@@ -68,7 +68,7 @@ void _avl_update_height(avl_node* n) {
  * node.  The rotation is centered around the node's right child.  The new
  * subtree root (the rotation's center) is returned.
  */
-avl_node* _avl_rotate_left(avl_node* n) {
+avl::avl_node* _avl_rotate_left(avl_node* n) {
     avl_node* center = n->right;
 
     // The center's left child and n "trade places" in the tree.
@@ -86,7 +86,7 @@ avl_node* _avl_rotate_left(avl_node* n) {
  * node.  The rotation is centered around the node's right child.  The new
  * subtree root (the rotation's center) is returned.
  */
-avl_node* _avl_rotate_right(avl_node* n) {
+avl::avl_node* _avl_rotate_right(avl_node* n) {
     avl_node* center = n->left;
 
     // The center's right child and n "trade places" in the tree.
@@ -110,7 +110,7 @@ int _avl_balance_factor(avl_node* n) {
     return _avl_get_height(n->right) - _avl_get_height(n->left);
 }
 
-avl_node* _avl_balance(avl_node* n) {
+avl::avl_node* _avl_balance(avl_node* n) {
 
     int bf = _avl_balance_factor(n);
     if (bf < -1) {
@@ -152,7 +152,7 @@ avl_node* _avl_balance(avl_node* n) {
  * Returns the root of the given subtree, modified to contain a new node with
  * the specified value.
  */
-avl_node* _avl_subtree_insert(int val, avl_node* n) {
+avl::avl_node* _avl_subtree_insert(int val, avl_node* n) {
 
     if (n == NULL) {
 
@@ -223,7 +223,7 @@ int _avl_subtree_min_val(avl_node* n) {
  * Returns the potentially new root of the given subtree, modified to have
  * the specified value removed.
  */
-avl_node* _avl_subtree_remove(int val, avl_node* n) {
+avl::avl_node* _avl_subtree_remove(int val, avl_node* n) {
 
     if (n == NULL) {
 
