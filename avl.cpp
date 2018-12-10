@@ -478,7 +478,9 @@ bool avl::iterator::has_next() {
 
 int avl::iterator::next() {
     assert(has_next());
-    return items.pop();
+    int next_item = items.front();
+    items.pop();
+    return next_item;
 }
 
 void _avl_subtree_print(avl::node* n, int level) {
