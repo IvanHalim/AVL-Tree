@@ -22,8 +22,8 @@ bool avl::isempty() {
 /*
  * Helper function to generate a single AVL node containing a given value.
  */
-avl::avl_node* _avl_node_create(int val) {
-    avl::avl_node* n = new avl_node;
+avl::avl_node* avl::_avl_node_create(int val) {
+    avl_node* n = new avl_node;
     n->val = val;
     n->left = n->right = NULL;
     n->height = 0;
