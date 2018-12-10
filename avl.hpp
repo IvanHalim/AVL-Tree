@@ -7,7 +7,7 @@ class avl {
         avl_node* root;
 
         // Helper functions
-        avl_node* _avl_node_create();
+        avl_node* _avl_node_create(int);
     public:
         avl();
         void insert(int);
