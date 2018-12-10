@@ -34,7 +34,7 @@ avl::avl_node* avl::_avl_node_create(int val) {
  * Helper function to get a node's height, even if the node is NULL (in which
  * case the height is -1).
  */
-int _avl_get_height(avl_node* n) {
+int avl::_avl_get_height(avl_node* n) {
     if (n == NULL) {
         return -1;
     }
