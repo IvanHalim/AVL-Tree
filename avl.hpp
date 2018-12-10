@@ -5,6 +5,9 @@ class avl {
     private:
         struct avl_node;
         avl_node* root;
+
+        // Helper functions
+        avl_node* _avl_node_create();
     public:
         avl();
         void insert(int);
