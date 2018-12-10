@@ -447,7 +447,7 @@ bool avl::path_sum(int sum) {
     return _avl_subtree_path_sum(sum, root);
 }
 
-struct avl::iterator {
+/*struct avl::iterator {
     queue<int> items;
     bool has_next();
     int next();
@@ -462,7 +462,7 @@ int avl::iterator::next() {
     int next_item = items.front();
     items.pop();
     return next_item;
-}
+}*/
 
 void _in_order_process(avl::node* n, avl::iterator iter) {
     assert(n);
