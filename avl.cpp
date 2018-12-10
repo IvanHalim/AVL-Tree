@@ -464,12 +464,12 @@ int avl::iterator::next() {
     return next_item;
 }*/
 
-void _in_order_process(avl::node* n, avl::iterator iter) {
+void _in_order_process(avl::node* n, avl::iterator& iter) {
     assert(n);
     iter.items.push(n->val);
 }
 
-void _euler_tour(avl::node* n, avl::iterator iter) {
+void _euler_tour(avl::node* n, avl::iterator& iter) {
     if (n != NULL) {
         _euler_tour(n->left, iter);
         _in_order_process(n, iter);
