@@ -68,7 +68,7 @@ void avl::_avl_update_height(avl_node* n) {
  * node.  The rotation is centered around the node's right child.  The new
  * subtree root (the rotation's center) is returned.
  */
-avl::avl_node* _avl_rotate_left(avl_node* n) {
+avl::avl_node* avl::_avl_rotate_left(avl_node* n) {
     avl_node* center = n->right;
 
     // The center's left child and n "trade places" in the tree.

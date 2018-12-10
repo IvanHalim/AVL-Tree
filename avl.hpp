@@ -10,6 +10,7 @@ class avl {
         avl_node* _avl_node_create(int);
         int _avl_get_height(avl_node*);
         void _avl_update_height(avl_node*);
+        avl_node* _avl_rotate_left(avl_node* n);
     public:
         avl();
         void insert(int);
