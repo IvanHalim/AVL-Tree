@@ -11,8 +11,15 @@ class avl {
         struct node;
         struct iterator {
             queue<int> items;
-            bool has_next();
-            int next();
+            bool has_next() {
+                return !items.empty();
+            };
+            int next() {
+                assert(has_next());
+                int next_item = items.front();
+                items.pop();
+                return next_item;
+            };
         };
     private:
         node* root;
@@ -29,16 +36,5 @@ class avl {
         iterator    iterator_create();
         ~avl();
 };
-
-int avl::iterator::next() {
-    assert(has_next());
-    int next_item = items.front();
-    items.pop();
-    return next_item;
-}
-
-bool avl::iterator::has_next() {
-    return !items.empty();
-}
 
 #endif
