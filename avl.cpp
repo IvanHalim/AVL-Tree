@@ -453,6 +453,17 @@ struct avl::iterator {
     int next();
 };
 
+bool avl::iterator::has_next() {
+    return !items.empty();
+}
+
+int avl::iterator::next() {
+    assert(has_next());
+    int next_item = items.front();
+    items.pop();
+    return next_item;
+}
+
 void _in_order_process(avl::node* n, avl::iterator iter) {
     assert(n);
     iter.items.push(n->val);
@@ -470,17 +481,6 @@ avl::iterator avl::iterator_create() {
     iterator iter;
     _euler_tour(root, iter);
     return iter;
-}
-
-bool avl::iterator::has_next() {
-    return !items.empty();
-}
-
-int avl::iterator::next() {
-    assert(has_next());
-    int next_item = items.front();
-    items.pop();
-    return next_item;
 }
 
 void _avl_subtree_print(avl::node* n, int level) {
