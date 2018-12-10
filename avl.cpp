@@ -1,5 +1,6 @@
 #include <iostream>
 #include "avl.hpp"
+#include "iterator.hpp"
 
 using std::cout;
 using std::endl;
@@ -463,7 +464,7 @@ int avl::iterator::next() {
 
 void _in_order_process(avl::node* n, avl::iterator& iter) {
     assert(n);
-    iter.items.push(n->val);
+    iter.insert(n->val);
 }
 
 void _euler_tour(avl::node* n, avl::iterator& iter) {
