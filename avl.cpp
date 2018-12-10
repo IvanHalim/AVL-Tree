@@ -4,10 +4,10 @@
 using std::cout;
 using std::endl;
 
-struct avl::avl_node {
+struct avl::node {
     int val;
-    avl_node* left;
-    avl_node* right;
+    node* left;
+    node* right;
     int height;
 };
 
@@ -22,8 +22,8 @@ bool avl::isempty() {
 /*
  * Helper function to generate a single AVL node containing a given value.
  */
-avl::avl_node* _avl_node_create(int val) {
-    avl::avl_node* n = new avl::avl_node;
+avl::node* _avl_node_create(int val) {
+    avl::node* n = new avl::node;
     n->val = val;
     n->left = n->right = NULL;
     n->height = 0;
@@ -34,7 +34,7 @@ avl::avl_node* _avl_node_create(int val) {
  * Helper function to get a node's height, even if the node is NULL (in which
  * case the height is -1).
  */
-int _avl_get_height(avl::avl_node* n) {
+int _avl_get_height(avl::node* n) {
     if (n == NULL) {
         return -1;
     }
@@ -51,7 +51,7 @@ int avl::height() {
  * Helper function to update the height of a node, based on the height of
  * its children.
  */
-void _avl_update_height(avl::avl_node* n) {
+void _avl_update_height(avl::node* n) {
     int lh = _avl_get_height(n->left);
     int rh = _avl_get_height(n->right);
 
@@ -68,8 +68,8 @@ void _avl_update_height(avl::avl_node* n) {
  * node.  The rotation is centered around the node's right child.  The new
  * subtree root (the rotation's center) is returned.
  */
-avl::avl_node* _avl_rotate_left(avl::avl_node* n) {
-    avl::avl_node* center = n->right;
+avl::node* _avl_rotate_left(avl::node* n) {
+    avl::node* center = n->right;
 
     // The center's left child and n "trade places" in the tree.
     n->right = center->left;
@@ -86,8 +86,8 @@ avl::avl_node* _avl_rotate_left(avl::avl_node* n) {
  * node.  The rotation is centered around the node's right child.  The new
  * subtree root (the rotation's center) is returned.
  */
-avl::avl_node* _avl_rotate_right(avl::avl_node* n) {
-    avl::avl_node* center = n->left;
+avl::node* _avl_rotate_right(avl::node* n) {
+    avl::node* center = n->left;
 
     // The center's right child and n "trade places" in the tree.
     n->left = center->right;
@@ -106,11 +106,11 @@ avl::avl_node* _avl_rotate_right(avl::avl_node* n) {
  * factor means the node is right-heavy, and a zero balance factor means the
  * node is height-balanced.
  */
-int _avl_balance_factor(avl::avl_node* n) {
+int _avl_balance_factor(avl::node* n) {
     return _avl_get_height(n->right) - _avl_get_height(n->left);
 }
 
-avl::avl_node* _avl_balance(avl::avl_node* n) {
+avl::node* _avl_balance(avl::node* n) {
 
     int bf = _avl_balance_factor(n);
     if (bf < -1) {
@@ -152,7 +152,7 @@ avl::avl_node* _avl_balance(avl::avl_node* n) {
  * Returns the root of the given subtree, modified to contain a new node with
  * the specified value.
  */
-avl::avl_node* _avl_subtree_insert(int val, avl::avl_node* n) {
+avl::node* _avl_subtree_insert(int val, avl::node* n) {
 
     if (n == NULL) {
 
@@ -202,7 +202,7 @@ void avl::insert(int val) {
 /*
  * Helper function to return the minimum value in a subtree of a AVL.
  */
-int _avl_subtree_min_val(avl::avl_node* n) {
+int _avl_subtree_min_val(avl::node* n) {
 
     /*
      * The minimum value in any subtree is just the leftmost value.  Keep going
@@ -223,7 +223,7 @@ int _avl_subtree_min_val(avl::avl_node* n) {
  * Returns the potentially new root of the given subtree, modified to have
  * the specified value removed.
  */
-avl::avl_node* _avl_subtree_remove(int val, avl::avl_node* n) {
+avl::node* _avl_subtree_remove(int val, avl::node* n) {
 
     if (n == NULL) {
 
@@ -283,7 +283,7 @@ avl::avl_node* _avl_subtree_remove(int val, avl::avl_node* n) {
              * n's parent via the recursion.  We don't need to balance the left
              * child before returning, since it should already be balanced.
              */
-            avl::avl_node* left_child = n->left;
+            avl::node* left_child = n->left;
             delete n;
             return left_child;
 
@@ -295,7 +295,7 @@ avl::avl_node* _avl_subtree_remove(int val, avl::avl_node* n) {
              * n's parent via the recursion.  We don't need to balance the right
              * child before returning, since it should already be balanced.
              */
-            avl::avl_node* right_child = n->right;
+            avl::node* right_child = n->right;
             delete n;
             return right_child;
 
@@ -323,7 +323,7 @@ void avl::remove(int val) {
 bool avl::contains(int val) {
 
     // Iteratively search for val in t.
-    avl_node* cur = root;
+    node* cur = root;
     while (cur != NULL) {
 
         if (val == cur->val) {
@@ -360,7 +360,7 @@ bool avl::contains(int val) {
  * Helper function to return the number of nodes in a subtree of a AVL rooted at
  * a specified node.
  */
-int _avl_subtree_size(avl::avl_node* n) {
+int _avl_subtree_size(avl::node* n) {
 
     // If n is null then the subtree has no node in it.
     if (n == NULL)
@@ -389,7 +389,7 @@ int avl::size() {
  * If at least one of the child has a path which adds up to sum, then the subtree
  * has a path which adds up to sum.
  */
-bool _avl_subtree_path_sum(int sum, avl::avl_node* n) {
+bool _avl_subtree_path_sum(int sum, avl::node* n) {
 
     if (n == NULL) {
 
@@ -443,7 +443,7 @@ bool avl::path_sum(int sum) {
     return _avl_subtree_path_sum(sum, root);
 }
 
-void _avl_subtree_print(avl::avl_node* n, int level) {
+void _avl_subtree_print(avl::node* n, int level) {
     if (n == NULL) {
         return;
     }

@@ -3,9 +3,9 @@
 
 class avl {
     public:
-        struct avl_node;
+        struct node;
     private:
-        avl_node* root;
+        node* root;
     public:
         avl();
         void  insert(int);
