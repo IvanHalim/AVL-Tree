@@ -1,6 +1,5 @@
 #include <iostream>
 #include "avl.hpp"
-#include "iterator.hpp"
 
 using std::cout;
 using std::endl;
@@ -450,11 +449,9 @@ bool avl::path_sum(int sum) {
     bool has_next();
     int next();
 };
-
 bool avl::iterator::has_next() {
     return !items.empty();
 }
-
 int avl::iterator::next() {
     assert(has_next());
     int next_item = items.front();
@@ -464,7 +461,7 @@ int avl::iterator::next() {
 
 void _in_order_process(avl::node* n, avl::iterator& iter) {
     assert(n);
-    iter.insert(n->val);
+    iter.items.push(n->val);
 }
 
 void _euler_tour(avl::node* n, avl::iterator& iter) {

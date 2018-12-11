@@ -3,14 +3,24 @@
 
 #include <queue>
 #include <cassert>
-#include "iterator.hpp"
 
 using std::queue;
 
 class avl {
     public:
         struct node;
-        class  iterator;
+        struct iterator {
+            queue<int> items;
+            bool has_next() {
+                return !items.empty();
+            };
+            int next() {
+                assert(has_next());
+                int next_item = items.front();
+                items.pop();
+                return next_item;
+            };
+        };
     private:
         node* root;
     public:
