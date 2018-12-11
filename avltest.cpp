@@ -23,8 +23,8 @@ int main() {
     cout << boolalpha << myAvl.path_sum(96) << endl;
 
     avl::iterator it = myAvl.iterator_create();
-    while (it.has_next()) {
-        cout << it.next() << ' ';
+    while (it->has_next()) {
+        cout << it->next() << ' ';
     }
     cout << endl;
 

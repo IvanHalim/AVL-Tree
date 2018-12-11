@@ -446,7 +446,7 @@ bool avl::path_sum(int sum) {
 
 void _in_order_process(avl::node* n, avl::iterator& iter) {
     assert(n);
-    iter.items.push(n->val);
+    iter.insert(n->val);
 }
 
 void _euler_tour(avl::node* n, avl::iterator& iter) {
