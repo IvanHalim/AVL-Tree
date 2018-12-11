@@ -461,21 +461,18 @@ int avl::iterator::next() {
 };
 
 void _pre_order_process(avl::node* n, avl::iterator& iter, string order) {
-    assert(n);
     if (order == "pre-order") {
         iter.insert(n->val);
     }
 }
 
 void _in_order_process(avl::node* n, avl::iterator& iter, string order) {
-    assert(n);
     if (order == "in-order") {
         iter.insert(n->val);
     }
 }
 
 void _post_order_process(avl::node* n, avl::iterator& iter, string order) {
-    assert(n);
     if (order == "post-order") {
         iter.insert(n->val);
     }
