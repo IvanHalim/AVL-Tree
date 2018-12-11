@@ -14,21 +14,9 @@ class avl {
             private:
                 queue<int> items;
             public:
-
-                void insert(int val) {
-                    items.push(val);
-                };
-
-                bool has_next() {
-                    return !items.empty();
-                };
-
-                int  next() {
-                    assert(has_next());
-                    int next_item = items.front();
-                    items.pop();
-                    return next_item;
-                };
+                void insert(int val);
+                bool has_next();
+                int  next();
         };
 
     private:

@@ -444,6 +444,21 @@ bool avl::path_sum(int sum) {
     return _avl_subtree_path_sum(sum, root);
 }
 
+void avl::iterator::insert(int val) {
+    items.push(val);
+};
+
+bool avl::iterator::has_next() {
+    return !items.empty();
+};
+
+int avl::iterator::next() {
+    assert(has_next());
+    int next_item = items.front();
+    items.pop();
+    return next_item;
+};
+
 void _in_order_process(avl::node* n, avl::iterator& iter) {
     assert(n);
     iter.insert(n->val);
