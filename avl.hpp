@@ -2,7 +2,6 @@
 #define AVL_HPP
 
 #include <queue>
-#include <cassert>
 
 using std::queue;
 
