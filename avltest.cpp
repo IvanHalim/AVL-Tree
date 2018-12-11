@@ -5,6 +5,13 @@ using std::cout;
 using std::endl;
 using std::boolalpha;
 
+void display_iterator(avl::iterator it) {
+    while (it.has_next()) {
+        cout << it.next() << ' ';
+    }
+    cout << endl;
+}
+
 int main() {
     avl myAvl;
     myAvl.insert(96);
@@ -22,11 +29,12 @@ int main() {
     cout << boolalpha << myAvl.path_sum(64) << endl;
     cout << boolalpha << myAvl.path_sum(96) << endl;
 
-    avl::iterator it = myAvl.iterator_create("in-order");
-    while (it.has_next()) {
-        cout << it.next() << ' ';
-    }
-    cout << endl;
+    avl::iterator in_order = myAvl.iterator_create("in-order");
+    display_iterator(in_order);
+    avl::iterator pre_order = myAvl.iterator_create("pre-order");
+    display_iterator(pre_order);
+    avl::iterator post_order = myAvl.iterator_create("post-order");
+    display_iterator(post_order);
 
     return 0;
 }
