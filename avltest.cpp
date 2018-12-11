@@ -22,7 +22,7 @@ int main() {
     cout << boolalpha << myAvl.path_sum(64) << endl;
     cout << boolalpha << myAvl.path_sum(96) << endl;
 
-    avl::iterator it = myAvl.iterator_create();
+    avl::iterator it = myAvl.iterator_create("in-order");
     while (it.has_next()) {
         cout << it.next() << ' ';
     }

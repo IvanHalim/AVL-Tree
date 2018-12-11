@@ -2,8 +2,10 @@
 #define AVL_HPP
 
 #include <queue>
+#include <string>
 
 using std::queue;
+using std::string;
 
 class avl {
     public:
@@ -30,7 +32,7 @@ class avl {
         int         height();
         int         size();
         void        print();
-        iterator    iterator_create();
+        iterator    iterator_create(string);
         ~avl();
 };
 

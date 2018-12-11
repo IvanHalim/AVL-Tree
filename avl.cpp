@@ -460,22 +460,40 @@ int avl::iterator::next() {
     return next_item;
 };
 
-void _in_order_process(avl::node* n, avl::iterator& iter) {
+void _pre_order_process(avl::node* n, avl::iterator& iter, string order) {
     assert(n);
-    iter.insert(n->val);
-}
-
-void _euler_tour(avl::node* n, avl::iterator& iter) {
-    if (n != NULL) {
-        _euler_tour(n->left, iter);
-        _in_order_process(n, iter);
-        _euler_tour(n->right, iter);
+    if (order == "pre-order") {
+        iter.insert(n->val);
     }
 }
 
-avl::iterator avl::iterator_create() {
+void _in_order_process(avl::node* n, avl::iterator& iter, string order) {
+    assert(n);
+    if (order == "in-order") {
+        iter.insert(n->val);
+    }
+}
+
+void _post_order_process(avl::node* n, avl::iterator& iter, string order) {
+    assert(n);
+    if (order == "post-order") {
+        iter.insert(n->val);
+    }
+}
+
+void _euler_tour(avl::node* n, avl::iterator& iter, string order) {
+    if (n != NULL) {
+        _pre_order_process(n, iter, order);
+        _euler_tour(n->left, iter, order);
+        _in_order_process(n, iter, order);
+        _euler_tour(n->right, iter, order);
+        _post_order_process(n, iter, order);
+    }
+}
+
+avl::iterator avl::iterator_create(string order) {
     iterator iter;
-    _euler_tour(root, iter);
+    _euler_tour(root, iter, order);
     return iter;
 }
 
