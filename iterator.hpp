@@ -7,7 +7,7 @@
 
 using std::queue;
 
-class avl::iterator {
+class iterator {
     private:
         queue<int> items;
     public:
@@ -16,15 +16,15 @@ class avl::iterator {
         int  next();
 };
 
-void avl::iterator::insert(int val) {
+void iterator::insert(int val) {
     items.push(val);
 }
 
-bool avl::iterator::has_next() {
+bool iterator::has_next() {
     return !items.empty();
 }
 
-int avl::iterator::next() {
+int iterator::next() {
     assert(has_next());
     int next_item = items.front();
     items.pop();
