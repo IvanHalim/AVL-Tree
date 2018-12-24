@@ -24,10 +24,6 @@ int main() {
     myAvl.remove(32);
     myAvl.insert(4);
     myAvl.print();
-    cout << myAvl.height() << endl;
-    cout << myAvl.size() << endl;
-    cout << boolalpha << myAvl.path_sum(64) << endl;
-    cout << boolalpha << myAvl.path_sum(96) << endl;
 
     avl::iterator in_order = myAvl.iterator_create("in-order");
     display_iterator(in_order);

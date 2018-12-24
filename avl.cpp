@@ -534,6 +534,7 @@ void avl::print() {
     } else {
         _avl_subtree_print(root, 0);
     }
+    cout << endl;
 }
 
 avl::~avl() {
