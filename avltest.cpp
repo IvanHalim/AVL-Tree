@@ -35,6 +35,8 @@ int main() {
     display_iterator(pre_order);
     avl::iterator post_order = myAvl.iterator_create("post-order");
     display_iterator(post_order);
+    avl::iterator level_order = myAvl.iterator_create("level-order");
+    display_iterator(level_order);
 
     return 0;
 }

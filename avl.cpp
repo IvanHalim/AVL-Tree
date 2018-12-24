@@ -488,9 +488,31 @@ void _euler_tour(avl::node* n, avl::iterator& iter, string order) {
     }
 }
 
+void _level_order_traversal(avl::node* n, avl::iterator& iter) {
+    if (n != NULL) {
+        queue<avl::node*> q;
+        q.push(n);
+        while(!q.empty()) {
+            n = q.front();
+            q.pop();
+            iter.insert(n->val);
+            if (n->left != NULL) {
+                q.push(n->left);
+            }
+            if (n->right != NULL) {
+                q.push(n->right);
+            }
+        }
+    }
+}
+
 avl::iterator avl::iterator_create(string order) {
     iterator iter;
-    _euler_tour(root, iter, order);
+    if (order == "level-order") {
+        _level_order_traversal(root, iter);
+    } else {
+        _euler_tour(root, iter, order);
+    }
     return iter;
 }
 
