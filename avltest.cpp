@@ -3,7 +3,6 @@
 
 using std::cout;
 using std::endl;
-using std::boolalpha;
 
 void display_iterator(avl::iterator it) {
     while (it.has_next()) {
